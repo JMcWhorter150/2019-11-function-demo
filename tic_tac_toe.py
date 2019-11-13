@@ -2,7 +2,7 @@ board = [[[], [], []],
 [[], [], []],
 [[], [], []]]
 p1 = "X"
-def print_board(board=board):
+def print_board():
     print(board[0])
     print(board[1])
     print(board[2])
@@ -19,6 +19,7 @@ def move(board, location, player=p1):
     else:
         board[row][column].append(player)
         return board
+
 def location_converter(number):
     number -= 1 #converting number to non-computer number
     tuple_list = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
@@ -85,15 +86,15 @@ while True:
         determine_win(p1)
         place_player(p2)
         determine_win(p2)
-    # except NameError:
-    #     print("You broke the game.")
-    #     break
+    except NameError:
+        print("You broke the game.")
+        break
     except ValueError:
         play_again = input("Do you want to play again? (Y/N) ")
         if play_again == "N":
             break
         else:
-            clear_board()
+            board = clear_board()
 
 
 # Todo: Figure out why I can't clear the board after each game
