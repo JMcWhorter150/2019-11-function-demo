@@ -48,6 +48,12 @@ def cent_split(total):
     cents = int((total - dollar_split(total)) * 100)
     return cents
 
+def make_change(total_charge, payment):
+    change = payment - total_charge
+    dollars = dollar_split(change)
+    cents = cent_split(change)
+    total = (convert_dollars(dollars), convert_coins(cents))
+    return total
 
 
 # convert_coins(175)
@@ -56,11 +62,9 @@ def cent_split(total):
 # print(dollar_split(173.31))
 # print(cent_split(173.31))
 
-user_input = float(input("Give me the bill total you want to split up. "))
-dollars = dollar_split(user_input)
-cents = cent_split(user_input)
-print(convert_dollars(dollars))
-print(convert_coins(cents))
+user_bill = float(input("Give me the bill total you want to split up. "))
+user_paid = float(input("Give me the amount that you paid. "))
+print(make_change(user_bill, user_paid))
 
 
 
